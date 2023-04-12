@@ -1,29 +1,22 @@
 #include <Servo.h>
 
-Servo myservo; // Declares a servo object named 'myservo'
-int leftMotorPin = 9; // Declares the pin number for the left motor control
-int ledPin = 13; // Declares the pin number for the LED
-int touchPin = 2; // Declares the pin number for the touch sensor
-Servo leftMotor; // Declares a servo object named 'leftMotor' for the left motor control
+Servo myservo; 
+int leftMotorPin = 9; 
+int touchPin = 2; 
+Servo leftMotor; 
 
-void setup() { // The setup function runs once when the Arduino is powered on or reset
-  pinMode(leftMotorPin, OUTPUT); // Sets the left motor control pin as an output
-  pinMode(ledPin, OUTPUT); // Sets the LED pin as an output
-  leftMotor.attach(leftMotorPin); // Attaches the left motor servo object to its control pin
-
-  pinMode(touchPin, INPUT); // Sets the touch sensor pin as an input
+void setup() { 
+  pinMode(leftMotorPin, OUTPUT); 
+  leftMotor.attach(leftMotorPin); 
 }
 
-void loop() { // The loop function runs repeatedly
-  leftMotorControl(80); // Calls the 'leftMotorControl' function with a value of 80
+void loop() { 
+  leftMotorControl(80);
 
-  if (digitalRead(touchPin) == HIGH) { // Checks if the touch sensor is pressed
-    digitalWrite(ledPin, HIGH); // Turns on the LED
-  } else {
-    digitalWrite(ledPin, LOW); // Turns off the LED
-  }
 }
 
-int leftMotorControl(int value) { // A function to control the left motor
-  leftMotor.write(map(value, 0, 100, 1000, 2000)); // Maps the input value to a range of 1000 to 2000 and sends it to the left motor
+int leftMotorControl(int value) { 
+  leftMotor.write(map(value, 0, 100, 1000, 2000)); 
 }
+
+ 
